@@ -54,13 +54,13 @@ class PostIndexPage(Page):
         return context
 
 PostIndexPage.content_panels = [
-    FieldPanel('title', classname='title')
-    FieldPanel('intro', classname='full')
+    FieldPanel('title', classname='title'),
+    FieldPanel('intro', classname='full'),
 ]
 
 
 PostIndexPage.promote_panels = [
-    MultiFieldPanel(Page.promote_panels, "Common page Configurations")
+    MultiFieldPanel(Page.promote_panels, "Common page Configurations"),
 ]
 
 class PostPageTag(TaggedItemBase):
