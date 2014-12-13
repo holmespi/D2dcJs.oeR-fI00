@@ -27,4 +27,50 @@ class ShowIndexPage(Page):
     def shows(self):
         shows = ShowPage.objects.live().descendant_of(self)
 
-         shows = shows.order_by(
+        shows = shows.filter(date_from__gte=date.today())
+
+        shows = shows.order_by('date')
+
+        return shows
+
+ShowIndexPage.content_panels = [
+    FieldPanel('title', classname='full'),
+    FieldPanel('intro', classname='full'),
+
+]
+
+IndexPage.promote_panels = [
+    MultiFieldPanel(Page.promote_panels, "Common page Configurations"),
+
+]
+
+class ShowPage:
+    date = models.DateField('date')
+    venue = models.CharField(max_length=255)
+    tickets = models.URLField(blank=True,Null=True)
+
+
+    @property
+    def show_index(self):
+        return self.get_ancestors().type(ShowIndexPage).last()
+
+ShowPage.content_panels = [
+    FieldPanel('title', classname='full'),
+    FieldPanel('date'),
+    FieldPanel('tickets'),
+]
+
+
+ShowPage.promote_panels = [
+    MultiFieldPanel(Page.promote_panels, "Common page Configurations"),
+]
+
+
+
+
+
+
+
+
+
+
