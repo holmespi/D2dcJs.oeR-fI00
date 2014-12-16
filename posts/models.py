@@ -68,7 +68,7 @@ class PostPageTag(TaggedItemBase):
 
 class PostPage(Page):
     body = RichTextField()
-    tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
+    tags = ClusterTaggableManager(through=PostPageTag, blank=True)
     date = models.DateField('Post Date')
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -87,15 +87,15 @@ class PostPage(Page):
         return self.get_ancestors().type(PostIndexPage).last()
 
 
-PostIndexPage.content_panels = [
-    FieldPanel('title', classname='title')
+PostPage.content_panels = [
+    FieldPanel('title', classname='title'),
     FieldPanel('date'),
     FieldPanel('body', classname='full')
 ]
 
 
-PostIndexPage.promote_panels = [
-    MultiFieldPanel(Page.promote_panels, "Common page Configurations")
+PostPage.promote_panels = [
+    MultiFieldPanel(Page.promote_panels, "Common page Configurations"),
     ImageChooserPanel('feed_image'),
     FieldPanel('tags'),
 ]

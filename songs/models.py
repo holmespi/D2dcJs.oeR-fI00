@@ -25,9 +25,9 @@ class SongIndexPage(Page):
 
     @property
     def songs(self):
-    songs = SongPage.objects.live().descendant_of(self)
+        songs = SongPage.objects.live().descendant_of(self)
 
-    return songs
+        return songs
 
 SongIndexPage.content_panels = [
     FieldPanel('title', classname='full'),
@@ -36,9 +36,39 @@ SongIndexPage.content_panels = [
 ]
 
 SongIndexPage.promote_panels = [
-    MultioFieldPanel(Page.promote_panels, "Common page Configurations"),
+    MultiFieldPanel(Page.promote_panels, "Common page Configurations"),
 ]
 
 class SongPage:
     about = RichTextField(blank=True)
-    song = 
+    song = models.ForeignKey(
+        'wagtaildocs.Document',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+    feed_image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+
+
+SongPage.content_panels = [
+    FieldPanel('title', classname='title'),
+    FieldPanel('date'),
+    FieldPanel('body', classname='full'),
+    DocumentChooserPanel('song'),
+]
+
+
+SongPage.promote_panels = [
+    MultiFieldPanel(Page.promote_panels, "Common page Configurations"),
+    ImageChooserPanel('feed_image'),
+]
+
+

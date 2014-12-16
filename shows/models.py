@@ -39,7 +39,7 @@ ShowIndexPage.content_panels = [
 
 ]
 
-IndexPage.promote_panels = [
+ShowIndexPage.promote_panels = [
     MultiFieldPanel(Page.promote_panels, "Common page Configurations"),
 
 ]
@@ -47,7 +47,7 @@ IndexPage.promote_panels = [
 class ShowPage:
     date = models.DateField('date')
     venue = models.CharField(max_length=255)
-    tickets = models.URLField(blank=True,Null=True)
+    tickets = models.URLField(blank=True,)
 
 
     @property
@@ -58,6 +58,7 @@ ShowPage.content_panels = [
     FieldPanel('title', classname='full'),
     FieldPanel('date'),
     FieldPanel('tickets'),
+    FieldPanel('venue'),
 ]
 
 

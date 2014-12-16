@@ -55,6 +55,10 @@ INSTALLED_APPS = (
     'wagtail.wagtailforms',
 
     'core',
+    'songs',
+    'posts',
+    'shows',
+    'products',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -77,26 +81,26 @@ WSGI_APPLICATION = 'adamb.wsgi.application'
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
 # SQLite (simplest install)
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': join(PROJECT_ROOT, 'db.sqlite3'),
-#    }
-#}
-
-# PostgreSQL (Recommended, but requires the psycopg2 library and Postgresql development headers)
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'adamb',
-        'USER': 'postgres',
-        'PASSWORD': '',
-        'HOST': '',  # Set to empty string for localhost.
-        'PORT': '',  # Set to empty string for default.
-        'CONN_MAX_AGE': 600,  # number of seconds database connections should persist for
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': join(PROJECT_ROOT, 'db.sqlite3'),
     }
 }
 
+# PostgreSQL (Recommended, but requires the psycopg2 library and Postgresql development headers)
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'adamb',
+#        'USER': 'postgres',
+#        'PASSWORD': 'letmein',
+#        'HOST': '',  # Set to empty string for localhost.
+#        'PORT': '',  # Set to empty string for default.
+#        'CONN_MAX_AGE': 600,  # number of seconds database connections should persist for
+#    }
+#}
+#
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -152,12 +156,12 @@ WAGTAIL_SITE_NAME = "adamb"
 # http://wagtail.readthedocs.org/en/latest/howto/performance.html#search
 # http://wagtail.readthedocs.org/en/latest/core_components/search/backends.html#elasticsearch-backend
 #
-WAGTAILSEARCH_BACKENDS = {
-    'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch',
-        'INDEX': 'adamb',
-    },
-}
+#WAGTAILSEARCH_BACKENDS = {
+#    'default': {
+#        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch.ElasticSearch',
+#        'INDEX': 'adamb',
+#    },
+#}
 
 
 # Whether to use face/feature detection to improve image cropping - requires OpenCV
