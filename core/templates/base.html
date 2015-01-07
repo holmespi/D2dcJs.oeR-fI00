@@ -1,3 +1,5 @@
+{% load wagtailcore_tags core_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +9,10 @@
 </head>
 
 <body>
-{% block menu %}
-{% get_site_root as site_root %}
-{% top_menu parent=site_root calling_page=self %}
-{% endblock %}
+    {% block menu %}
+        {% get_site_root as site_root %}
+        {% top_menu parent=site_root calling_page=self %}
+    {% endblock %}
     {% block content %}
 
     {% endblock %}

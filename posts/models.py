@@ -22,7 +22,7 @@ from south.signals import post_migrate
 
 class PostIndexPage(Page):
     intro = RichTextField(blank=True)
-    
+
     @property
     def posts(self):
         #get list of live blog pages that are descendant of this
