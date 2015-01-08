@@ -1,5 +1,5 @@
 {% load wagtailcore_tags core_tags %}
-
+{% get_site_root as site_root %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,10 +9,11 @@
 </head>
 
 <body>
+    <h1><a href="{% pageurl site_root %}">ADAM BECTHEL</a></h1>
     {% block menu %}
-        {% get_site_root as site_root %}
         {% top_menu parent=site_root calling_page=self %}
     {% endblock %}
+    
     {% block content %}
 
     {% endblock %}

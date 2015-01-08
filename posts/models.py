@@ -41,7 +41,7 @@ class PostIndexPage(Page):
 
         page = request.GET.get('page')
 
-        paginator = Paginator(posts, 1)
+        paginator = Paginator(posts, 5)
         try:
             posts = paginator.page(page)
         except PageNotAnInteger:
