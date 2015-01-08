@@ -22,7 +22,7 @@ from south.signals import post_migrate
 
 class ShowIndexPage(Page):
     intro = RichTextField(blank=True)
-
+    subpage_types = ['shows.ShowPage',]
     @property
     def shows(self):
         shows = ShowPage.objects.live().descendant_of(self)
@@ -44,7 +44,7 @@ ShowIndexPage.promote_panels = [
 
 ]
 
-class ShowPage:
+class ShowPage(Page):
     date = models.DateField('date')
     venue = models.CharField(max_length=255)
     tickets = models.URLField(blank=True,)

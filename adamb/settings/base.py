@@ -59,6 +59,7 @@ INSTALLED_APPS = (
     'posts',
     'shows',
     'products',
+    'slider',
 )
 
 MIDDLEWARE_CLASSES = (

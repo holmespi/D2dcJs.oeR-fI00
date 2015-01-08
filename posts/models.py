@@ -22,6 +22,7 @@ from south.signals import post_migrate
 
 class PostIndexPage(Page):
     intro = RichTextField(blank=True)
+    subpage_types = ['posts.PostPage',]
 
     @property
     def posts(self):

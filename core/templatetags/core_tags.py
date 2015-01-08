@@ -39,11 +39,15 @@ def top_menu(context, parent, calling_page=None):
         'menuitems': menuitems,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
-}
+    }
 
 @register.inclusion_tag('tags/slider.html', takes_context=True)
 def slider(context):
-    sliders =
+    sliders = ShitStorm.objects.live()
+    return {
+            'sliders': sliders,
+            'request': context['request'],
+    }
 
 
 

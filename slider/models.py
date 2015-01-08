@@ -20,9 +20,26 @@ from modelcluster.tags import ClusterTaggableManager
 from taggit.models import Tag, TaggedItemBase
 from south.signals import post_migrate
 
-class SliderPage(Page):
-    body = RichTextField()
-    date = models.DateField('Post Date')
+class ShitStormIndexPage(Page):
+    intro = RichTextField()
+    subpage_types = ['slider.ShitStorm',]
+
+
+ShitStormIndexPage.content_panels = [
+    FieldPanel('title', classname='title'),
+    FieldPanel('intro', classname='full'),
+]
+
+
+ShitStormIndexPage.promote_panels = [
+    MultiFieldPanel(Page.promote_panels, "Common page Configurations"),
+]
+
+
+
+
+class ShitStorm(Page):
+    date = models.DateField('Slider Date')
     picture = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -32,16 +49,15 @@ class SliderPage(Page):
     )
 
 
-PostPage.content_panels = [
+
+ShitStorm.content_panels = [
     FieldPanel('title', classname='title'),
     FieldPanel('date'),
-    FieldPanel('body', classname='full')
+    ImageChooserPanel('picture')
 ]
 
 
-PostPage.promote_panels = [
+ShitStorm.promote_panels = [
     MultiFieldPanel(Page.promote_panels, "Common page Configurations"),
-    ImageChooserPanel('feed_image'),
-    FieldPanel('tags'),
 ]
 
