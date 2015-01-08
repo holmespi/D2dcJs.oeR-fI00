@@ -1,0 +1,5 @@
+{% load wagtailcore_tags core_tags %}
+{% for song in songs %}
+<a href="{% pageurl song %}">{{ song.title }}</a>
+<br>
+{% endfor %}

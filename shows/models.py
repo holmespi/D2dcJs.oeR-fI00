@@ -27,11 +27,31 @@ class ShowIndexPage(Page):
     def shows(self):
         shows = ShowPage.objects.live().descendant_of(self)
 
-        shows = shows.filter(date_from__gte=date.today())
-
         shows = shows.order_by('date')
 
         return shows
+
+    def get_context(self, request):
+        shows = self.shows
+
+        tag = request.GET.get('tag')
+        if tag:
+            shows = shows.filter(tags__name=tag)
+
+        page = request.GET.get('page')
+
+        paginator = Paginator(shows, 5)
+        try:
+            shows = paginator.page(page)
+        except PageNotAnInteger:
+            shows = paginator.page(1)
+        except EmptyPage:
+            shows = paginator.page(paginator.num_pages)
+
+        context = super(ShowIndexPage, self).get_context(request)
+        context['shows'] = shows
+        return context
+
 
 ShowIndexPage.content_panels = [
     FieldPanel('title', classname='full'),

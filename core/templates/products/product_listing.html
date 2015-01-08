@@ -1,0 +1,5 @@
+{% load wagtailcore_tags core_tags %}
+{% for product in products %}
+<a href="{% pageurl product %}">{{ product.title }}</a>
+<br>
+{% endfor %}

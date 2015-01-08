@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'compressor',
     'taggit',
     'modelcluster',
+    'pipeline'.
 
     'wagtail.wagtailcore',
     'wagtail.wagtailadmin',
@@ -119,10 +120,13 @@ USE_TZ = True
 STATIC_ROOT = join(PROJECT_ROOT, 'static')
 STATIC_URL = '/static/'
 
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
+    'pipeline.finders.PipelineFinder',
 )
 
 MEDIA_ROOT = join(PROJECT_ROOT, 'media')
@@ -135,7 +139,9 @@ MEDIA_URL = '/media/'
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
-
+PIPELINE_COMPILERS = (
+    'pipeline_compass.compiler.CompassCompiler',
+)
 
 # Template configuration
 

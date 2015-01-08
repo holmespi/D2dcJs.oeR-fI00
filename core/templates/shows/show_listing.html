@@ -1,0 +1,5 @@
+{% load wagtailcore_tags core_tags %}
+{% for show in shows %}
+<a href="{% pageurl show %}">{{ show.title }}</a>
+<br>
+{% endfor %}
