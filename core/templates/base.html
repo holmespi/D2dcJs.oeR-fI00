@@ -1,11 +1,11 @@
-{% load wagtailcore_tags core_tags %}
+{% load wagtailcore_tags core_tags pipeline %}
 {% get_site_root as site_root %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{{ self.title }}</title>
-
+    {% stylesheet 'main' %}
 </head>
 
 <body>

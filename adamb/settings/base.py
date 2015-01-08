@@ -41,7 +41,7 @@ INSTALLED_APPS = (
     'compressor',
     'taggit',
     'modelcluster',
-    'pipeline'.
+    'pipeline',
 
     'wagtail.wagtailcore',
     'wagtail.wagtailadmin',
@@ -142,7 +142,16 @@ COMPRESS_PRECOMPILERS = (
 PIPELINE_COMPILERS = (
     'pipeline_compass.compiler.CompassCompiler',
 )
-
+PIPELINE_CSS = {
+        'main': {
+            'source_filenames': (
+                'sass/ie.scss',
+                'sass/print.scss',
+                'sass/screen.scss',
+                ),
+            'output_filename': 'css/style.css'
+            },
+        }
 # Template configuration
 
 from django.conf import global_settings
