@@ -7,6 +7,7 @@ from shows.models import *
 from songs.models import *
 from posts.models import *
 from products.models import *
+from slider.models import *
 
 register = template.Library()
 
@@ -39,4 +40,10 @@ def top_menu(context, parent, calling_page=None):
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
 }
+
+@register.inclusion_tag('tags/slider.html', takes_context=True)
+def slider(context):
+    sliders =
+
+
 
