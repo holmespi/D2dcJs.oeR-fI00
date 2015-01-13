@@ -1,21 +1,33 @@
-{% load wagtailcore_tags core_tags pipeline %}
+{% load static wagtailcore_tags core_tags %}
 {% get_site_root as site_root %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{{ self.title }}</title>
-    {% stylesheet 'main' %}
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static 'stylesheets/style.css' %}">
 </head>
 
 <body>
-    <h1><a href="{% pageurl site_root %}">ADAM BECTHEL</a></h1>
-    {% block menu %}
-        {% top_menu parent=site_root calling_page=self %}
-    {% endblock %}
-    
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <h1><a href="{% pageurl site_root %}">ADAM BECTHEL</a></h1>
+            </div><!-- .logo -->
+
+            <div class="nav"> 
+                {% block menu %}
+                    {% top_menu parent=site_root calling_page=self %}
+                {% endblock %}
+            </div><!-- .nav -->
+        </div><!-- .header -->
+        <hr>
     {% block content %}
 
     {% endblock %}
+    </div><!-- .container -->
 </body>
+
 </html>

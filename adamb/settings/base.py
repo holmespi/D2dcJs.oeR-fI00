@@ -41,7 +41,6 @@ INSTALLED_APPS = (
     'compressor',
     'taggit',
     'modelcluster',
-    'pipeline',
 
     'wagtail.wagtailcore',
     'wagtail.wagtailadmin',
@@ -126,7 +125,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
-    'pipeline.finders.PipelineFinder',
 )
 
 MEDIA_ROOT = join(PROJECT_ROOT, 'media')
@@ -139,20 +137,6 @@ MEDIA_URL = '/media/'
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
-PIPELINE_COMPILERS = (
-    'pipeline_compass.compiler.CompassCompiler',
-)
-PIPELINE_CSS = {
-        'main': {
-            'source_filenames': (
-                'sass/ie.scss',
-                'sass/print.scss',
-                'sass/screen.scss',
-                ),
-            'output_filename': 'css/style.css'
-            },
-        }
-# Template configuration
 
 from django.conf import global_settings
 

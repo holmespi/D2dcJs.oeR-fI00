@@ -1,0 +1,64 @@
+// Screen
+// ======
+
+@import "grids";
+
+@import "compass/reset";
+
+@import "compass";
+
+$blued: #060D33;
+$bluel: #D0EAFF;
+$dark: #000305;
+$brownl: #331D0D;
+$brownd: #331106;
+
+$base-font-size: 26px;
+
+$base-line-height: 38px;
+
+$rhythm-unit: em;
+
+@include establish-baseline;
+
+/** Base styles **/
+body {
+    background-color: $dark;
+    font-family: 'Oswald', sans-serif;
+    color: white;
+    @include display-flex;
+    @include justify-content(center);
+}
+
+a {
+    @include link-colors(white, $bluel, $bluel, white, white);
+    text-decoration: none;
+}
+
+.header {
+    @include display-flex(inline-flex);
+}
+
+.nav {
+    margin-left: 2em;
+    a {
+        margin-left: .2em;
+    }
+}
+.container {
+
+}
+
+.logo{
+    h1 {
+        @include adjust-font-size-to(72px);
+    }
+}
+
+.date {
+    @include adjust-font-size-to(18px);
+}
+
+.subhead {
+    @include adjust-font-size-to(24px);
+}

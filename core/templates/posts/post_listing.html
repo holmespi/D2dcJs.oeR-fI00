@@ -1,5 +1,7 @@
-{% load wagtailcore_tags core_tags %}
+{% load wagtailcore_tags wagtailimages_tags core_tags %}
 {% for post in posts %}
-<a href="{% pageurl post %}">{{ post.title }}</a>
+{% image post.feed_image fill-750x275 %}
 <br>
+<h2 class="subhead" ><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+<p class="date">{{ post.date }}</p>
 {% endfor %}
